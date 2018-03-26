@@ -1,0 +1,36 @@
+##########################################################
+# Racktables setup for Docker.
+#
+# author: Hessel Bakker [h.bakkerit@gmail.com]
+#
+
+version: "3.1"
+
+services:
+  db:
+    image: mysql
+    volumes:
+      - racktables_data:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD_FILE: /run/secrets/mysql_root_password
+      MYSQL_DATABASE: racktables
+      MYSQL_USER: racktables
+      MYSQL_PASSWORDFILE: /run/secrets/mysql_password
+    secrets:
+      - mysql_root_password
+      - mysql_password
+
+services:
+  app:
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+
+
+secrets:
+  mysql_root_password:
+    external: true
+  mysql_password:
+    external: true
