@@ -12,4 +12,5 @@ RUN apt-get update && \
     sed -i -e "s@DocumentRoot /var/www/html@DocumentRoot /var/www/@g" /etc/apache2/sites-available/000-default.conf && \
     touch '/var/www/inc/secret.php' && \
     chmod a=rw '/var/www/inc/secret.php'
+EXPOSE 80
 CMD apachectl -D FOREGROUND
