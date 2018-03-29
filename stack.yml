@@ -8,9 +8,9 @@ version: "3.1"
 
 services:
   db:
-    image: mysql:8.0.4
+    image: mysql:5.7.21
     volumes:
-      - racktables_database:/var/lib/mysql
+      - database:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD_FILE: /run/secrets/mysql_root_password
       MYSQL_DATABASE: racktables
@@ -39,6 +39,8 @@ services:
     depends_on:
       - db
     image: incodehq/racktables:1.0
+    volumes:
+      - app_data:/var/www/
     ports:
       - 3306:3306
     networks:
@@ -82,4 +84,5 @@ networks:
   traefik_traefik:
     external: true
 volumes:
-    racktables_database:
+    database:
+    app_data:
