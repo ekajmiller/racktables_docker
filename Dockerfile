@@ -14,6 +14,7 @@ RUN apt-get update && \
     chown www-data:nogroup /var/www/inc/secret.php && \
     chmod 440 /var/www/inc/secret.php && \
     rm -rf ${RACKTABLES_HOME}/ && \
+    rm -rf RackTables-${RACKTABLES_VERSION}.tar.gz && \
     apt-get purge -y wget
 EXPOSE 80
 CMD apachectl -D FOREGROUND
