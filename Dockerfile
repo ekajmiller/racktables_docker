@@ -11,6 +11,8 @@ RUN apt-get update && \
     mv ${RACKTABLES_HOME}/wwwroot/* /var/www/ && \
     sed -i -e "s@DocumentRoot /var/www/html@DocumentRoot /var/www/@g" /etc/apache2/sites-available/000-default.conf && \
     touch '/var/www/inc/secret.php' && \
-    chmod a=rw '/var/www/inc/secret.php'
+    chown www-data:nogroup /var/www/inc/secret.php && \
+    chmod 440 /var/www/inc/secret.php && \
+    rm -rf /rt #cleanup
 EXPOSE 80
 CMD apachectl -D FOREGROUND
