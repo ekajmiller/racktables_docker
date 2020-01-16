@@ -1,6 +1,6 @@
 FROM ubuntu:16.04
 MAINTAINER Incode Software, incode.org
-ARG RACKTABLES_VERSION=0.21.1
+ARG RACKTABLES_VERSION=0.21.4
 ARG RACKTABLES_HOME=/rt
 RUN apt-get update && \
     apt-get install -y apache2-bin libapache2-mod-php7.0 php7.0-gd php7.0-mysql php7.0-mbstring php7.0-bcmath php7.0-json php7.0-snmp php7.0-ldap wget && \
