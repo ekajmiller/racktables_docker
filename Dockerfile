@@ -6,7 +6,7 @@ RUN apt-get update && \
     apt-get install -y apache2-bin libapache2-mod-php7.0 php7.0-gd php7.0-mysql php7.0-mbstring php7.0-bcmath php7.0-json php7.0-snmp php7.0-ldap wget && \
     rm -rf /var/www/* && \
     mkdir -p ${RACKTABLES_HOME} && \
-    wget -P / https://github.com/hbakkerit/racktables_docker/raw/master/RackTables-${RACKTABLES_VERSION}.tar.gz && \
+    wget -P / https://github.com/ekajmiller/racktables_docker/raw/master/RackTables-${RACKTABLES_VERSION}.tar.gz && \
     tar xzf RackTables-${RACKTABLES_VERSION}.tar.gz --strip-components=1 -C ${RACKTABLES_HOME} && \
     mv ${RACKTABLES_HOME}/wwwroot/* /var/www/ && \
     sed -i -e "s@DocumentRoot /var/www/html@DocumentRoot /var/www/@g" /etc/apache2/sites-available/000-default.conf && \
